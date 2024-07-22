@@ -10,6 +10,29 @@ return {
     config = function()
       -- calling `setup` is optional for customization
       require('fzf-lua').setup {}
+
+      vim.keymap.set('n', '<leader>az', function()
+        vim.cmd ':FzfLua'
+        -- print 'Fzf files'
+        -- require('fzf-lua').files()
+      end, { desc = 'Fzf' })
+
+      vim.keymap.set('n', '<leader>af', function()
+        require('fzf-lua').files()
+      end, { desc = 'Fzf files' })
+
+      vim.keymap.set('n', '<leader>agr', function()
+        require('fzf-lua').lsp_references()
+      end, { desc = 'Fzf go to references' })
+
+      vim.keymap.set('n', '<leader>agd', function()
+        require('fzf-lua').lsp_definitions()
+      end, { desc = 'Fzf go to definitions' })
+
+      -- INFO: FZF In currently open buffer
+      vim.keymap.set('n', '<leader>a/', function()
+        require('fzf-lua').lgrep_curbuf()
+      end, { desc = 'Fzf go to definitions' })
     end,
   },
   'sainnhe/gruvbox-material',
