@@ -111,6 +111,11 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('n', '<C-n>', '<C-w>w')
 vim.keymap.set('n', '<C-e>', '<C-w>W')
 
+vim.keymap.set('n', '<C-l>', '<C-w>w')
+vim.keymap.set('n', '<C-j>', '<C-w>w')
+vim.keymap.set('n', '<C-h>', '<C-w>W')
+vim.keymap.set('n', '<C-k>', '<C-w>W')
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -498,10 +503,12 @@ require('lazy').setup({
         gopls = {
           settings = {
             -- gopls = {
+            -- buildflags = { '-tags=dev' },
             buildflags = { '-tags=e2e' },
             -- },
           },
           init_options = {
+            -- buildFlags = { '-tags=dev' },
             buildFlags = { '-tags=e2e' },
           },
         },
@@ -805,6 +812,7 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
+  { require 'custom' },
   { import = 'custom.plugins' },
 }, {
   ui = {

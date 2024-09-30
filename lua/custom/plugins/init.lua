@@ -13,100 +13,40 @@ return {
 
       vim.keymap.set('n', '<leader>az', function()
         vim.cmd ':FzfLua'
-        -- print 'Fzf files'
-        -- require('fzf-lua').files()
       end, { desc = 'Fzf' })
 
-      vim.keymap.set('n', '<leader>af', function()
+      vim.keymap.set('n', '<leader>asf', function()
         require('fzf-lua').files()
-      end, { desc = 'Fzf files' })
+      end, { desc = 'Search in files' })
 
       vim.keymap.set('n', '<leader>agr', function()
         require('fzf-lua').lsp_references()
-      end, { desc = 'Fzf go to references' })
+      end, { desc = 'Go to references' })
 
       vim.keymap.set('n', '<leader>agd', function()
         require('fzf-lua').lsp_definitions()
-      end, { desc = 'Fzf go to definitions' })
+      end, { desc = 'Go to definitions' })
 
-      -- INFO: FZF In currently open buffer
       vim.keymap.set('n', '<leader>a/', function()
         require('fzf-lua').lgrep_curbuf()
-      end, { desc = 'Fzf go to definitions' })
+      end, { desc = 'Find in currently open buffer' })
+
+      vim.keymap.set('n', '<leader>aa', function()
+        require('fzf-lua').buffers()
+      end, { desc = 'Find open buffer' })
+
+      vim.keymap.set('n', '<leader>asg', function()
+        require('fzf-lua').live_grep()
+      end, { desc = 'Search grep' })
+
+      vim.keymap.set('n', '<leader>asn', function()
+        require('fzf-lua').files { cwd = vim.fn.stdpath 'config' }
+      end, { desc = 'Search in nvim config files' })
+
+      vim.keymap.set('n', '<leader>agn', function()
+        require('fzf-lua').live_grep { cwd = vim.fn.stdpath 'config' }
+      end, { desc = 'Grep in nvim config files' })
     end,
-  },
-  'sainnhe/gruvbox-material',
-  {
-    'rebelot/kanagawa.nvim',
-    -- priority = 1000,
-    -- init = function()
-    --   local ayu = {
-    --     -- green
-    --     green = '#d5ff80',
-    --     green2 = '#87d96c',
-    --
-    --     editor = {
-    --       fg = '#cccac2',
-    --       bg = '#242936',
-    --       line = '#1a1f29',
-    --     },
-    --     syntax = {
-    --       func = '#ffd173',
-    --       green = '#d5ff80',
-    --       operator = '#f29e74',
-    --       constant = '#dfbfff',
-    --     },
-    --     vcs = {
-    --       add = '#87d96c',
-    --     },
-    --
-    --     red = '#ff6666',
-    --     pink = '#bf7caf',
-    --   }
-    --
-    --   local kanagawa = require 'kanagawa'
-    --   -- kanagawa.setup {
-    --   --   colors = {
-    --   --     palette = {
-    --   --       ayuMirageViolet = ayu.syntax.constant,
-    --   --       ayuMirageGreen = ayu.green,
-    --   --       ayuMirageGreen2 = ayu.green2,
-    --   --       ayuMirageFunction = ayu.syntax.func,
-    --   --       ayuMirageOperator = ayu.syntax.operator,
-    --   --       ayuMirageRed = ayu.red,
-    --   --       ayuMiragePink = ayu.pink,
-    --   --     },
-    --   --   },
-    --   --   overrides = function(colors)
-    --   --     return {
-    --   --       Comment = { fg = colors.palette.ayuMiragePink },
-    --   --       -- Constant = { fg = colors.palette.ayuMirageViolet },
-    --   --       String = { fg = colors.palette.ayuMirageGreen },
-    --   --       -- Function = { fg = colors.palette.ayuMirageFunction },
-    --   --       -- Operator = { fg = colors.palette.ayuMirageOperator },
-    --   --
-    --   --       -- VCS - Git
-    --   --       GitSignsAdd = { fg = colors.palette.ayuMirageGreen2 },
-    --   --     }
-    --   --   end,
-    --   -- }
-    --   kanagawa.load 'ayu'
-    -- end,
-  },
-  {
-    'Shatur/neovim-ayu',
-    -- priority = 1000, -- Make sure to load this before all the other start plugins.
-    -- init = function()
-    --   vim.cmd.colorscheme 'ayu-dark'
-    -- end,
-  },
-  -- 'luisiacc/gruvbox-baby',
-  {
-    'folke/tokyonight.nvim',
-    -- priority = 1000, -- Make sure to load this before all the other start plugins.
-    -- init = function()
-    --   vim.cmd.colorscheme 'tokyonight-moon'
-    -- end,
   },
   {
     'catppuccin/nvim',
@@ -115,7 +55,4 @@ return {
       vim.cmd.colorscheme 'catppuccin'
     end,
   },
-  -- {
-  --   'rmehri01/onenord.nvim',
-  -- },
 }
